@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodMind AI</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="display-4 fw-bold">
+            🍔 FoodMind AI
+        </h1>
+
+        <p class="lead">
+            Ask questions in English. Get SQL instantly.
+        </p>
+
+    </div>
+
+    <div class="card shadow-lg p-4">
+
+        <form method="POST">
+
+            <input
+                type="text"
+                class="form-control form-control-lg mb-3"
+                name="question"
+                placeholder="Example: Show all restaurants in Hyderabad"
+                required>
+
+            <button class="btn btn-primary btn-lg w-100">
+                🚀 Generate SQL
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if sql %}
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+
+            🤖 Generated SQL
+
+        </div>
+
+        <div class="card-body">
+
+            <pre>{{ sql }}</pre>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if rows %}
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-success text-white">
+
+            📊 Query Results
+
+        </div>
+
+        <div class="card-body table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        {% for col in columns %}
+
+                        <th>{{ col }}</th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for row in rows %}
+
+                    <tr>
+
+                        {% for cell in row %}
+
+                        <td>{{ cell }}</td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

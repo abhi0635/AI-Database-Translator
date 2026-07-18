@@ -1,0 +1,25 @@
+body{
+    background: linear-gradient(135deg,#ff6b35,#ff914d);
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+}
+
+.card{
+    border:none;
+    border-radius:18px;
+}
+
+h1{
+    color:white;
+}
+
+.lead{
+    color:white;
+}
+
+pre{
+    background:#1e1e1e;
+    color:#00ff88;
+    padding:15px;
+    border-radius:10px;
+}
